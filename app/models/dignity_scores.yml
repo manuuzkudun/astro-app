@@ -1,0 +1,89 @@
+domicile:
+  score: 5
+
+exaltation:
+  score: 4
+
+detriment:
+  score: -5
+
+fall:
+  score: -4
+
+pilgrim:
+  score: -2
+
+domicile_reception:
+  score: 5
+
+exaltation_reception:
+  score: 4
+
+dispositor:
+  score: 1
+
+triplicity:
+  score: 3
+
+decanate:
+  score: 1
+
+term:
+  score: 2
+
+via_combusta:
+  score: -5
+
+direct:
+  score: 4
+
+retrograde:
+  score: -5
+
+fast:
+  score: 2
+
+slow:
+  score: -2
+
+stationary:
+  score: -1
+
+in_joy:
+  score: 2
+
+in_house_1:
+  score: 5
+
+in_house_2:
+  score: 3
+
+in_house_3:
+  score: 1
+
+in_house_4:
+  score: 4
+
+in_house_5:
+  score: 3
+
+in_house_6:
+  score: -5
+
+in_house_7:
+  score: 4
+
+in_house_8:
+  score: -5
+
+in_house_9:
+  score: 2
+
+in_house_10:
+  score: 5
+
+in_house_11:
+  score: 4
+
+in_house_12:
+  score: -4

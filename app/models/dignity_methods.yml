@@ -1,0 +1,89 @@
+domicile:
+  method: :in_domicile?
+
+exaltation:
+  method: :in_exaltation?
+
+detriment:
+  method: :in_detriment?
+
+fall:
+  method: :in_fall?
+
+pilgrim:
+  method: :in_pilgrim_sign?
+
+domicile_reception:
+  method: :in_reception_of_domiciles?
+
+exaltation_reception:
+  method: :in_reception_of_exaltation?
+
+dispositor:
+  method: :disposition
+
+triplicity:
+  method: :in_triplicity?
+
+decanate:
+  method: :in_decanate?
+
+term:
+  method: :in_term?
+
+via_combusta:
+  method: :in_via_combusta?
+
+direct:
+  method: :direct?
+
+retrograde:
+  method: :retrograde?
+
+fast:
+  method: :fast?
+
+slow:
+  method: :slow?
+
+stationary:
+  method: :stationary?
+
+in_joy:
+  method: :in_joy?
+
+in_house_1:
+  method: :in_house_1?
+
+in_house_2:
+  method: :in_house_2?
+
+in_house_3:
+  method: :in_house_3?
+
+in_house_4:
+  method: :in_house_4?
+
+in_house_5:
+  method: :in_house_5?
+
+in_house_6:
+  method: :in_house_6?
+
+in_house_7:
+  method: :in_house_7?
+
+in_house_8:
+  method: :in_house_8?
+
+in_house_9:
+  method: :in_house_9?
+
+in_house_10:
+  method: :in_house_10?
+
+in_house_11:
+  method: :in_house_11?
+
+in_house_12:
+  method: :in_house_12?
