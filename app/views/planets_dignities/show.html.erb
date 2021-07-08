@@ -1,0 +1,177 @@
+<% romanHouses = {
+  "1" => "I",
+  "2" => "II",
+  "3" => "III",
+  "4" => "IV",
+  "5" => "V",
+  "6" => "VI",
+  "7" => "VII",
+  "8" => "VIII",
+  "9" => "IX",
+  "10" => "X",
+  "11" => "XI",
+  "12" => "XII"
+}%>
+  <div class="container mt-3">
+    <hr></hr>
+    <h6><%= t("results_page.results") %></h6>
+    <hr></hr>
+  </div>
+  <div class="container mt-3 mb-5">
+    <% @planets_dignities.each do |planet| %>
+      <div class="planet-result">
+        <h3><%= t("planets.#{planet[:planet_name]}") %></h3>
+        <span class="planet-icon <%= planet[:planet_name] %> "></span>
+        <div class="planet-result--summary row">
+          <div class="col">
+            <span class="sign-icon top <%= planet[:current_sign] %>"></span>
+            <span class="sign-icon bottom"><%= t("zodiac_signs.#{planet[:current_sign].to_s}") %></span>
+          </div>
+          <div class="col">
+            <span class="sign-degree top"><%= planet[:sign_degree].round(2)%>&deg;</span>
+            <span class="sign-degree bottom"><%= t("planet_dignities.degree")%></span>
+          </div>
+          <div class="col">
+            <span class="sign-house top"><%= romanHouses[planet[:house].to_s] %></span>
+            <span class="sign-house bottom"><%= t("planet_dignities.house")%></span>
+          </div>
+        </div>
+        <hr></hr>
+        <h6 class="planet-list essential heading"><span class="title"><%= t("planet_dignities.essential")%></span><span class="toggler"></span></h6>
+        <ul class="dignities-list">
+          <hr></hr>
+          <% if planet[:dignities][:essential_dignities][:domicile][:result]  %>
+            <li><span><%= t("planet_dignities.domicile")%></span><span class="scored">+<%= planet[:dignities][:essential_dignities][:domicile][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.domicile")%></span><span><%= planet[:dignities][:essential_dignities][:domicile][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:essential_dignities][:exaltation][:result]  %>
+            <li><span><%= t("planet_dignities.exaltation")%></span><span class="scored">+<%= planet[:dignities][:essential_dignities][:exaltation][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.exaltation")%></span><span><%= planet[:dignities][:essential_dignities][:exaltation][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:essential_dignities][:detriment][:result]  %>
+            <li><span><%= t("planet_dignities.detriment")%></span><span class="unscored"><%= planet[:dignities][:essential_dignities][:detriment][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.detriment")%></span><span><%= planet[:dignities][:essential_dignities][:detriment][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:essential_dignities][:fall][:result]  %>
+            <li><span><%= t("planet_dignities.fall")%></span><span class="unscored"><%= planet[:dignities][:essential_dignities][:fall][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.fall")%></span><span><%= planet[:dignities][:essential_dignities][:fall][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:essential_dignities][:pilgrim][:result]  %>
+            <li><span><%= t("planet_dignities.pilgrim")%></span><span class="unscored"><%= planet[:dignities][:essential_dignities][:pilgrim][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.pilgrim")%></span><span><%= planet[:dignities][:essential_dignities][:pilgrim][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:essential_dignities][:domicile_reception][:result]  %>
+            <li><span><%= t("planet_dignities.domicile_reception")%></span><span class="scored">+<%= planet[:dignities][:essential_dignities][:domicile_reception][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.domicile_reception")%></span><span><%= planet[:dignities][:essential_dignities][:domicile_reception][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:essential_dignities][:exaltation_reception][:result]  %>
+            <li><span><%= t("planet_dignities.exaltation_reception")%></span><span class="scored">+<%= planet[:dignities][:essential_dignities][:exaltation_reception][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.exaltation_reception")%></span><span><%= planet[:dignities][:essential_dignities][:exaltation_reception][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:essential_dignities][:decanate][:result]  %>
+            <li><span><%= t("planet_dignities.decanate")%></span><span class="scored">+<%= planet[:dignities][:essential_dignities][:decanate][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.decanate")%></span><span><%= planet[:dignities][:essential_dignities][:decanate][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:essential_dignities][:term][:result]  %>
+            <li><span><%= t("planet_dignities.term")%></span><span class="scored">+<%= planet[:dignities][:essential_dignities][:term][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.term")%></span><span><%= planet[:dignities][:essential_dignities][:term][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:essential_dignities][:triplicity][:result]  %>
+            <li><span><%= t("planet_dignities.triplicity")%></span><span class="scored">+<%= planet[:dignities][:essential_dignities][:triplicity][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.triplicity")%></span><span><%= planet[:dignities][:essential_dignities][:triplicity][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:essential_dignities][:via_combusta][:result]  %>
+            <li><span><%= t("planet_dignities.via_combusta")%></span><span class="unscored"><%= planet[:dignities][:essential_dignities][:via_combusta][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.via_combusta")%></span><span><%= planet[:dignities][:essential_dignities][:via_combusta][:score] %></span></li>
+          <% end %>
+        </ul>
+        <hr></hr>
+        <h6 class="planet-list accidental heading"><span class="title"><%= t("planet_dignities.accidental")%></span><span class="toggler"></span></h6>
+        <ul class="dignities-list">
+          <hr></hr>
+          <% (1..12).each do |house| %>
+            <% if planet[:dignities][:accidental_dignities][:"in_house_#{house}"][:result] %>
+              <% if planet[:dignities][:accidental_dignities][:"in_house_#{house}"][:score] > 0 %>
+                 <li><span><%= t("planet_dignities.in_house")%> <%= romanHouses["#{house}"] %></span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:"in_house_#{house}"][:score]%></span></li>
+                <% else %>
+                 <li><span><%= t("planet_dignities.in_house")%> <%= romanHouses["#{house}"] %></span><span class="unscored"><%= planet[:dignities][:accidental_dignities][:"in_house_#{house}"][:score]%></span></li>
+              <% end %>
+            <% end %>
+          <% end %>
+          <% if planet[:planet_name] != 'sun' && planet[:planet_name] != 'moon' %>
+            <% if planet[:dignities][:accidental_dignities][:direct][:result] %>
+              <li><span><%= t("planet_dignities.direct")%></span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:direct][:score] %></span></li>
+            <% else %>
+              <li><span><%= t("planet_dignities.direct")%></span><span><%= planet[:dignities][:accidental_dignities][:direct][:score] %></span></li>
+            <% end %>
+          <% end %>
+          <% if planet[:planet_name] != 'sun' && planet[:planet_name] != 'moon' %>
+            <% if planet[:dignities][:accidental_dignities][:retrograde][:result]  %>
+              <li><span><%= t("planet_dignities.retrograde")%></span><span class="unscored"><%= planet[:dignities][:accidental_dignities][:retrograde][:score] %></span></li>
+            <% else %>
+              <li><span><%= t("planet_dignities.retrograde")%></span><span><%= planet[:dignities][:accidental_dignities][:retrograde][:score] %></span></li>
+            <% end %>
+          <% end %>
+          <% if planet[:planet_name] != 'sun' && planet[:planet_name] != 'moon' %>
+            <% if planet[:dignities][:accidental_dignities][:fast][:result]  %>
+              <li><span><%= t("planet_dignities.fast")%></span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:fast][:score] %></span></li>
+            <% else %>
+              <li><span><%= t("planet_dignities.fast")%></span><span><%= planet[:dignities][:accidental_dignities][:fast][:score] %></span></li>
+            <% end %>
+          <% end %>
+          <% if planet[:planet_name] != 'sun' && planet[:planet_name] != 'moon' %>
+            <% if planet[:dignities][:accidental_dignities][:slow][:result]  %>
+              <li><span><%= t("planet_dignities.slow")%></span><span class="unscored"><%= planet[:dignities][:accidental_dignities][:slow][:score] %></span></li>
+            <% else %>
+              <li><span><%= t("planet_dignities.slow")%></span><span><%= planet[:dignities][:accidental_dignities][:slow][:score] %></span></li>
+            <% end %>
+          <% end %>
+          <% if planet[:planet_name] != 'sun' && planet[:planet_name] != 'moon' %>
+            <% if planet[:dignities][:accidental_dignities][:stationary][:result]  %>
+              <li><span>S<%= t("planet_dignities.stationary")%></span><span class="unscored"><%= planet[:dignities][:accidental_dignities][:stationary][:score] %></span></li>
+            <% else %>
+              <li><span><%= t("planet_dignities.stationary")%></span><span><%= planet[:dignities][:accidental_dignities][:stationary][:score] %></span></li>
+            <% end %>
+          <% end %>
+          <% if planet[:dignities][:accidental_dignities][:in_joy][:result]  %>
+            <li><span><%= t("planet_dignities.in_joy")%></span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:in_joy][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.in_joy")%></span><span><%= planet[:dignities][:accidental_dignities][:in_joy][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:accidental_dignities][:dispositor][:result]  %>
+            <li><span><%= t("planet_dignities.disposited_planets")%></span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:dispositor][:score] %></span></li>
+          <% else %>
+            <li><span><%= t("planet_dignities.disposited_planets")%></span><span><%= planet[:dignities][:accidental_dignities][:dispositor][:score] %></span></li>
+          <% end %>
+        </ul>
+        <hr></hr>
+        <ul class="dignities-list total expanded">
+          <% if planet[:dignities]["total_score"] > 0  %>
+            <li><span><%= t("planet_dignities.score") %></span><span class="scored"><%= planet[:dignities]["total_score"] %></span></li>
+          <% else %>
+            <% if planet[:dignities]["total_score"] == 0 %>
+            <li><span><%= t("planet_dignities.score") %></span><span class="score"><%= planet[:dignities]["total_score"] %></span></li>
+            <% else %>
+            <li><span><%= t("planet_dignities.score") %></span><span class="unscored"><%= planet[:dignities]["total_score"] %></span></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <div class="container mt-3 mb-5">
+    <div class="re-submit-holder mb-5">
+      <a class="btn btn-primary" href="/" role="button"><%= t("results_page.enter_new_data") %></a>
+    </div>
+  </div>

@@ -1,0 +1,69 @@
+<%= render "devise/shared/error_messages", resource: resource %>
+<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <p.alert alert-primary>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+<% end %>
+  <div class="container">
+    <hr></hr>
+    <h6><%= t("global.navigation.edit") %> <%= resource_name.to_s.humanize %></h6>
+    <hr></hr>
+  </div>
+  <div class="container formgroup single mt-4">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= t("global.navigation.email") %></span>
+      </div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: t("global.navigation.email").capitalize %>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= t("global.navigation.password") %></span>
+      </div>
+      <% if @minimum_password_length %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: t("global.navigation.blank_msg_placeholder") + ". #{@minimum_password_length} " + t("global.navigation.min_chars_msg_placeholder") %>
+      <% else %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: t("global.navigation.password") %>
+      <% end %>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= t("global.navigation.password") %><sup>2</sup></span>
+      </div>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: t("global.navigation.confirm_pass_change_placeholder") %>
+    </div>
+      <div class="alert alert-info security-msg" role="alert">
+        <p><%= t("global.navigation.security_msg") %></p>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><%= t("global.navigation.current_password") %></span>
+        </div>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: t("global.navigation.current_pass_msg_placeholder") %>
+      </div>
+      <div class="secondary-nav-controls">
+        <div class="secondary-nav-controls--btn">
+          <%= f.submit t("global.navigation.update"), class: "actions btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="container mt-4">
+    <hr></hr>
+    <h6><%= t("global.navigation.disagree") %> </h6>
+    <hr></hr>
+  </div>
+  <div class="container formgroup single mt-4">
+    <div class="secondary-nav-controls">
+      <div class="secondary-nav-controls--btn">
+        <%= button_to t("global.navigation.cancel_account"), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "actions btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-4">
+    <hr></hr>
+    <h6><%= t("global.navigation.also") %></h6>
+    <hr></hr>
+  </div>
+  <div class="container site-mapping mt-2">
+    <h6><%= link_to t("global.navigation.back"), :back %></h6>
+  </div>

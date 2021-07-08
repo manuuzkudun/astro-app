@@ -1,0 +1,340 @@
+@import "bootstrap-sprockets";
+// @import "bootstrap";
+
+$scored: green; //positive dignity
+$unscored: red; //negative dignity
+$lightGray: #ccc; //light gray
+
+$montseFont: 'Montserrat', Helvetica Neue, Helvetica, Arial, sans-serif;
+
+/* ==================================================
+GLOBAL STYLES
+================================================== */
+
+
+
+html,body {
+  width:100%;
+  height:100%;
+  overflow-y:hidden;
+
+}
+
+.form-control:focus, .btn-primary:focus, .btn-primary.focus {
+  box-shadow:none !important;
+}
+
+p.alert {
+  position:fixed;
+  width:50%;
+  top:6rem;
+  left:0;
+  right:0;
+  margin:auto;
+  text-align:center;
+  font-family:$montseFont;
+  font-size:0.813rem;
+  font-weight:700;
+  opacity:1;
+  transition:opacity 0.5s linear;
+
+}
+
+p.alert.faded {
+  opacity:0;
+}
+
+
+
+div.main {
+  width:100%;
+  height:100%;
+  opacity:1;
+  overflow-y:auto;
+  padding:3rem 0 5rem 0;
+  transition:opacity 0.5s linear;
+
+}
+
+
+
+footer {
+  background:transparent none;
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  font-family:Verdana, Arial, sans-serif;
+  font-size:0.625rem;
+  pointer-events:none;
+
+  p {
+    text-align:right;
+    padding:2rem;
+    margin:0;
+    width:100%;
+
+    span {
+      color:red;
+    }
+  }
+}
+
+
+
+
+/* ==================================================
+STYLES FOR NEW USER PROFILES MENU
+================================================== */
+
+ul.nav {
+  background:#222 none;
+  a {
+    color:#fff;
+  }
+
+  div.dropdown-menu {
+    a{
+      color:#222;
+    }
+
+  }
+
+}
+
+a.dropdown-toggle {
+    font-size:0.750rem;
+    text-transform:uppercase;
+    letter-spacing:0.125rem;
+    font-family:Verdana,Arial,sans-serif;
+    font-weight:700;
+    padding:0.750rem 0;
+
+
+
+}
+
+/* ==================================================
+STYLES FOR NEW LANGUAGE SELECTOR
+================================================== */
+
+ul.language-selector {
+
+  padding:0;
+  margin:0;
+  list-style:none;
+  font-family: Verdana,Arial,sans-serif;
+  font-size:0.750rem;
+  text-transform:uppercase;
+  font-weight:700;
+  left:2rem;
+  top:0.750rem;
+
+  li {
+    display:inline-block;
+    vertical-align:top;
+    color:#fff;
+
+    a {
+      color:#fff;
+    }
+  }
+
+
+}
+
+/* ==================================================
+STYLES FOR NEW VIEW (ROOT)
+================================================== */
+
+// TEMPORARY HIDE FILEDS ALREADY FILLED BY DATE-PICKER
+
+div.formgroup {
+  width:55%;
+  margin:0 auto;
+
+  .form-control {
+    height:100%;
+  }
+
+
+}
+
+div.primary div.formgroup, input.btn-mq {
+  display:none;
+}
+
+
+div.primary {
+
+  input.submit-btn {
+    text-align:center;
+  }
+
+  input.submit-btn.disabled {
+    pointer-events: none;
+  }
+
+}
+
+/* ==================================================
+STYLES FOR MAP QUEST
+================================================== */
+
+  div.holder-mq {
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,.95) none;
+
+    transform:translateY(100%);
+    transition:transform 0.35s ease-out;
+
+    div.map_mq {
+      width:100%;
+      height:100%;
+    }
+
+
+
+    div.closer-mq {
+      position:absolute;
+      width:2rem;
+      height:2rem;
+      border-radius:2rem;
+      background:#fff none;
+      top:1.35rem;
+      right:1.35rem;
+      cursor:pointer;
+      z-index:1000;
+
+      span {
+        display:block;
+        width:100%;
+        height:100%;
+        background:transparent url('/assets/close.svg') no-repeat center center;
+        background-size:1rem;
+
+        transform:rotate(0deg);
+        transition:transform 0.25s ease-out;
+
+      }
+
+
+    }
+
+    div.closer-mq:hover {
+      span {
+        transform:rotate(180deg);
+      }
+    }
+
+  }
+
+
+  div.mq-ui {
+    position:relative;
+    overflow:hidden;
+    max-height:3.500rem;
+    height:100%;
+
+    div.mq-ui--miniform {
+      background:red none;
+      height:100%;
+
+      transform:translateY(0);
+      transition:transform ease 0.5s;
+
+      input {
+        min-height:3.500rem;
+        height:100%;
+      }
+
+
+      input.msg-mq {
+        background-color:#1a1a1a;
+
+
+      }
+
+      input.msg-mq {
+        color:#fff !important;
+      }
+    }
+
+    div.mq-ui--miniform.show-msg {
+      transform:translateY(-3.500rem);
+    }
+
+
+    button.mq-btn.desktop {
+      position:absolute;
+      top:0;
+      right:0.938rem;
+      height:100%;
+      transform:translateX(0);
+      transition:transform 0.25s ease-out;
+
+      background-image: url('/assets/location-pointer.svg');
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size:1rem;
+    }
+
+    button.mq-btn.desktop:not(.set):hover {
+      background-color:rgba(0,0,255,1);
+    }
+
+    button.mq-btn.desktop.set {
+      background:rgba(0,255,0,.25) none;
+    }
+
+
+  }
+
+  div.mq-ui.disabled {
+    div.mq-ui--miniform {
+      pointer-events: none;
+
+      input::placeholder {
+        opacity:.5;
+        cursor: none;
+      }
+
+    }
+  }
+
+  button.mq-btn.mobile {
+    width:100%;
+    display:none;
+    text-align:left;
+    background-image: url('/assets/location-pointer.svg');
+    background-repeat:no-repeat;
+    background-position:95% center;
+    background-size:1rem;
+
+  }
+
+/* ==================================================
+NEW.ERB CSS OVERRIDES
+================================================== */
+
+body.has-map  {
+  div.main {
+    opacity:0;
+  }
+  div.holder-mq {
+    transform:translateY(0);
+  }
+}
+
+@media screen and (max-width: 35.999rem) {
+  .nav-pills .nav-link, ul.language-selector {
+    font-size:0.625rem;
+  }
+  p.alert {
+    width:80%;
+  }
+}

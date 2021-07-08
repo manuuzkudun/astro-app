@@ -1,0 +1,374 @@
+// Place all the styles related to the PlanetsDignities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$scored: green; //positive dignity
+$unscored: red; //negative dignity
+$lightGray: #ccc; //light gray
+
+$montseFont: 'Montserrat', Helvetica Neue, Helvetica, Arial, sans-serif;
+
+
+/* ==================================================
+STYLES FOR PLANET DIGNITIES (SHOW.ERB)
+================================================== */
+
+div.container {
+  text-align:center;
+
+  h1 {
+    color:#000;
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    font-size:0.813rem;
+    padding:0;
+    margin:0;
+    font-weight:700;
+    font-family:$montseFont;
+
+  }
+  h4 {
+    color:gray;
+    text-transform: uppercase;
+    padding:0;
+    margin:0.5rem 0 2rem 0;
+    font-size:0.625rem;
+    font-weight:700;
+    font-family:$montseFont;
+
+  }
+  h6 {
+    color:$lightGray;
+    text-transform: uppercase;
+    padding:0;;
+    font-size:0.625rem;
+    font-weight:700;
+    font-family:$montseFont;
+
+  }
+  hr {
+    width:50%;
+    color:$lightGray;
+  }
+  select {
+    margin:0 0 .5rem 0 !important;
+    outline:none;
+    min-height:3rem;
+    font-family:inherit;
+  }
+  input.btn {
+    margin:2.5rem 0 3rem 0;
+  }
+  label:last-of-type {
+    margin:1.5rem 0 0 0;
+  }
+
+  /* Styles for each planet
+  =================================================== */
+
+  div.planet-result {
+    margin:3rem auto 0 auto;
+
+    h3 {
+      margin:0;
+      font-size:1rem;
+      font-family: $montseFont;
+
+    }
+
+    h6 {
+      text-align:left;
+      max-width:50%;
+      margin:0 auto;
+      min-height:1rem;
+      height:100%;
+      cursor:pointer;
+
+      >span {
+        display:inline-block;
+        vertical-align: middle;
+        height:100%;
+
+      }
+
+      span.title {
+        width:75%;
+
+      }
+
+
+      span.toggler {
+        width:25%;
+        text-align:right;
+        height:1rem;
+        background:transparent url('/assets/down-chevron.svg') no-repeat center right;
+
+      }
+    }
+
+    span.planet-icon {
+
+      display:block;
+      width:100%;
+      height:10rem;
+
+    }
+
+    /* Planet icons
+    =================================================== */
+
+    span.planet-icon.sun {
+      background:transparent url('/assets/AstroIconsSVG/sun.svg') no-repeat center center;
+    }
+
+    span.planet-icon.moon {
+      background:transparent url('/assets/AstroIconsSVG/moon.svg') no-repeat center center;
+    }
+
+    span.planet-icon.mercury {
+      background:transparent url('/assets/AstroIconsSVG/mercury.svg') no-repeat center center;
+    }
+
+    span.planet-icon.venus {
+      background:transparent url('/assets/AstroIconsSVG/venus.svg') no-repeat center center;
+    }
+
+    span.planet-icon.mars {
+      background:transparent url('/assets/AstroIconsSVG/mars.svg') no-repeat center center;
+    }
+
+    span.planet-icon.jupiter {
+      background:transparent url('/assets/AstroIconsSVG/jupiter.svg') no-repeat center center;
+    }
+
+    span.planet-icon.saturn {
+      background:transparent url('/assets/AstroIconsSVG/saturn.svg') no-repeat center center;
+    }
+
+    div.planet-result--summary{
+      margin:0 auto;
+      max-width:50%;
+
+      div.col {
+        text-transform:uppercase;
+        font-size:0.813rem;
+        font-family:$montseFont;
+        font-weight:700;
+
+        span {
+          display:block;
+          height:3rem;
+          width:100%;
+        }
+
+        span.sign-icon.top {
+          background-size:1rem !important;
+        }
+
+        /* Sign Icons
+        =================================================== */
+
+        span.sign-icon.top.aries {
+          background:transparent url('/assets/AstroIconsSVG/Aries.svg') no-repeat top center;
+        }
+
+        span.sign-icon.top.taurus {
+          background:transparent url('/assets/AstroIconsSVG/Taurus.svg') no-repeat top center;
+        }
+
+        span.sign-icon.top.gemini {
+          background:transparent url('/assets/AstroIconsSVG/Gemini.svg') no-repeat top center;
+        }
+
+        span.sign-icon.top.cancer {
+          background:transparent url('/assets/AstroIconsSVG/Cancer.svg') no-repeat top center;
+        }
+
+        span.sign-icon.top.leo {
+          background:transparent url('/assets/AstroIconsSVG/Leo.svg') no-repeat top center;
+        }
+
+        span.sign-icon.top.virgo {
+          background:transparent url('/assets/AstroIconsSVG/Virgo.svg') no-repeat top center;
+        }
+
+        span.sign-icon.top.libra {
+          background:transparent url('/assets/AstroIconsSVG/Libra.svg') no-repeat top center;
+        }
+
+        span.sign-icon.top.scorpio {
+          background:transparent url('/assets/AstroIconsSVG/Scorpio.svg') no-repeat top center;
+        }
+
+        span.sign-icon.top.sagittarius {
+          background:transparent url('/assets/AstroIconsSVG/Sagittarius.svg') no-repeat top center;
+        }
+
+        span.sign-icon.top.capricorn {
+          background:transparent url('/assets/AstroIconsSVG/Capricorn.svg') no-repeat top center;
+        }
+
+        span.sign-icon.top.acuarius {
+          background:transparent url('/assets/AstroIconsSVG/Acuarius.svg') no-repeat top center;
+        }
+
+        span.sign-icon.top.pisces {
+          background:transparent url('/assets/AstroIconsSVG/Pisces.svg') no-repeat top center;
+        }
+
+        span.bottom {
+          color:$lightGray;
+        }
+      }
+
+    }
+
+    ul.dignities-list {
+      padding:0;
+      margin:1rem auto 0 auto;
+      list-style:none;
+      max-width:50%;
+      color:#919aa1;
+
+      display:none;
+
+      li {
+
+        text-align:left;
+
+        span {
+
+          display:inline-block;
+          vertical-align: middle;
+          font-family:$montseFont;
+          font-weight:700;
+          font-size:0.813rem;
+          text-transform:uppercase;
+        }
+
+        span:first-of-type {
+          width:75%;
+        }
+
+        span.scored {
+          color:$scored;
+        }
+
+        span.unscored {
+          color:$unscored;
+        }
+
+        span:last-of-type {
+          width:25%;
+          text-align:right;
+        }
+
+      }
+
+      hr {
+        width:100% !important;
+      }
+    }
+
+    ul.dignities-list.total {
+
+      margin:0 auto 3rem auto;
+      padding:0 0 3rem 0;
+
+
+
+      li {
+
+        span:first-of-type {
+          color:#222;
+        }
+
+        span:last-of-type {
+          font-size:1rem;
+        }
+      }
+    }
+
+    /* Exapanded list style toggled by JS
+    =================================================== */
+
+    ul.dignities-list.expanded {
+      display:block;
+    }
+
+  }
+
+  div.re-submit-holder {
+    a {
+      margin: 0;
+    }
+  }
+
+}
+
+
+@media screen and (max-width: 35.999rem) {
+
+  div.mq-ui {
+      button.mq-btn.desktop {
+        display:none;
+      }
+  }
+  button.mq-btn.mobile {
+    display:block;
+  }
+
+
+  div.formgroup {
+    width:95%;
+
+    
+  }
+
+  div.container {
+    hr {
+      width:100%;
+    }
+
+    input.btn {
+      width:100%;
+    }
+
+    div.planet-result {
+      h6 {
+        text-align:center;
+        max-width:90%;
+     }
+
+     ul.dignities-list {
+       max-width:90%;
+     }
+    }
+
+
+
+  }
+
+  div.site-mapping {
+    margin-bottom:3rem;
+  }
+
+  div.re-submit-holder {
+
+    a {
+      width:100%;
+    }
+  }
+
+  footer {
+    background:#fff none;
+
+    p {
+      text-align:center;
+    }
+  }
+
+
+
+
+}

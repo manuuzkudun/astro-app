@@ -1,0 +1,22 @@
+  <div class="container">
+    <hr></hr>
+    <h6><%= t("planet_dignities.planet_dignities")%></h6>
+    <hr></hr>
+  </div>
+  <div class="container formgroup single mt-4">
+    <%= form_with model: @profile, scope: 'score_config', method: :patch, local: true do |f| %>
+      <% @profile.score_config.each do |dignity, dignity_data| %>
+        <div class="input-group dinity-val mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><%= t("planet_dignities.#{dignity}").capitalize %></span>
+          </div>
+          <%= f.number_field dignity, value: dignity_data['score'], min: -10, max: 10, class:"form-control" %>
+        </div>
+      <% end %>
+      <div class="secondary-nav-controls">
+        <div class="secondary-nav-controls--btn">
+          <%= f.submit t("global.navigation.update"), class: "actions btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>

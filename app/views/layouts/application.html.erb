@@ -1,16 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AstroApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
+  <%= render 'layouts/head' %>
+  <body class="">
+    <ul class="language-selector position-fixed">
+      <li>
+        <%= link_to 'En', change_locale_path(:en), :title => 'English' %>
+      </li>
+      <li>/</li>
+      <li>
+        <%= link_to 'Es', change_locale_path(:es), :title => 'Español' %>
+      </li>
+    </ul>
+    <ul class="nav nav-pills justify-content-end">
+    <% if user_signed_in? %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %>&nbsp;</a>
+        <div class="dropdown-menu">
+          <%= link_to t('global.navigation.edit_profile'), edit_user_registration_path, :class => 'dropdown-item' %>
+          <%= link_to t('global.navigation.logout'), destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %>
+          <%= link_to t('global.navigation.preferences'), edit_profile_path(current_user.id), :class => 'dropdown-item'  %>
+        </div>
+      </li>
+    <% else %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Your Account &nbsp;</a>
+        <div class="dropdown-menu">
+          <%= link_to t('global.navigation.sign_up'), new_user_registration_path, :class => 'nav-link'  %>
+          <%= link_to t('global.navigation.login'), new_user_session_path, :class => 'nav-link'  %>
+        </div>
+      </li>
+    <% end %>
+    </ul>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    <div id="main" class="main">
+      <div class="container mt-3">
+        <h1 class="site-heading"><a href="/"><%= t("home_page.title") %></a></h1>
+        <h4 class="site-subheading"><%= t("home_page.sub_title") %></h4>
+      </div>
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

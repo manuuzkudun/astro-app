@@ -1,0 +1,40 @@
+<div class="container">
+  <hr></hr>
+  <h6><%= t("global.navigation.login") %></h6>
+  <hr></hr>
+</div>
+  <div class="container formgroup single mt-4">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= t("global.navigation.email") %></span>
+      </div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: t("global.navigation.email").capitalize %>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= t("global.navigation.password") %></span>
+      </div>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: t("global.navigation.password").capitalize %>
+    </div>
+    <div class="secondary-nav-controls">
+      <% if devise_mapping.rememberable? %>
+        <div class="secondary-nav-controls--remember">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+      <div class="secondary-nav--btn">
+        <%= f.submit "Log in", class: "actions btn btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="container mt-4">
+    <hr></hr>
+    <h6><%= t("global.navigation.also") %></h6>
+    <hr></hr>
+  </div>
+  <div class="container site-mapping mt-2">
+    <h6><%= render "devise/shared/links" %></h6>
+  </div>

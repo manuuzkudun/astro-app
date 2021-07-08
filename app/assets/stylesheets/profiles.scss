@@ -1,0 +1,126 @@
+// Place all the styles related to the Profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*=================================================
+LOG IN / SIGN UP STYLES
+=================================================== */
+
+div.formgroup.single {
+  max-width:31.250rem;
+  width:100%;
+
+  margin:0 auto 3rem auto;
+
+  span.input-group-text {
+    // font-family:$montseFont;
+    // font-size:0.813rem;
+    font-weight:700;
+    text-transform:capitalize;
+  }
+
+  .form-control {
+    height:auto;
+  }
+
+  .field_with_errors {
+    position:relative;
+    -webkit-box-flex:1;
+    flex:1 1 auto;
+    width:1%;
+    margin-bottom:0;
+  }
+
+
+
+  div.secondary-nav-controls {
+    width:100%;
+    padding:0;
+    text-align:right;
+    position:relative;
+
+    .secondary-nav-controls--remember {
+
+      label {
+        margin:0;
+        font-size:0.625rem;
+        font-weight:700;
+      }
+    }
+
+  }
+
+  input.btn {
+    margin:0;
+    width:100%;
+  }
+}
+
+div.site-mapping {
+
+  h6 {
+    a {
+      margin:0 0.5rem;
+    }
+  }
+}
+
+
+/* Messages
+=================================================== */
+
+div.security-msg {
+  p {
+    font-size:0.813rem;
+    // font-family:$montseFont;
+    margin:0;
+    // text-align:left;
+  }
+}
+
+/* ============================================================
+STYLES FOR PLANET DIGNITIES EDITABLE VALUES (PROFILES/EDIT.ERB)
+============================================================= */
+
+  div.dinity-val {
+
+    div.input-group-prepend {
+      width:50%;
+    }
+
+    span {
+      width:100%;
+      font-size:0.813rem;
+    }
+    input {
+      text-align:right;
+    }
+
+  }
+
+  @media screen and (max-width: 35.999rem) {
+
+
+      div.input-group-prepend {
+        width:100% !important;
+
+        span {
+          width:100% !important;
+          display:block;
+          font-size:0.813rem;
+        }
+
+      }
+
+      input {
+        text-align:center !important;
+      }
+
+      input.city-mq {
+        text-align:left !important;
+      }
+
+
+
+  }
