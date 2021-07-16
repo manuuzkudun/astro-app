@@ -1,0 +1,1 @@
+ENV["GEONAMES_USERNAME"] = 'manuuzkudun'

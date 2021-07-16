@@ -6,10 +6,7 @@ class EphemeridesService
     @latitude = client_data.latitude
     @longitude = client_data.longitude
     @altitude = client_data.altitude
-    @year = client_data.year
-    @month = client_data.month
-    @day = client_data.day
-    @hour = client_data.hour
+    @local_time = client_data.local_time
   end
 
   def get_data(planet)
@@ -89,7 +86,7 @@ class EphemeridesService
   end
 
   def julian_day
-    Swe4r::swe_julday(@year, @month, @day, @hour)
+    Swe4r::swe_julday(@local_time.year, @local_time.month, @local_time.day, @local_time.hour)
   end
 
   def in_sector?(latitude, cusp1, cusp2)
