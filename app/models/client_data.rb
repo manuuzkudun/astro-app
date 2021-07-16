@@ -8,6 +8,6 @@ class ClientData
     @year = params[:year].to_i
     @month = params[:month].to_i
     @day = params[:day].to_i
-    @hour = params[:hour].to_f - 1
+    @hour = params[:hour].to_f 
   end
 end

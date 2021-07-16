@@ -14,6 +14,10 @@
 //= require activestorage
 //= require_tree .
 
+/* ==================================================
+IMPORT MODULES
+================================================== */
+//import * as Luxon from './libs/luxon_min.js';
 
 /* ==================================================
 DECLARE GLOBAL VARS
@@ -170,6 +174,30 @@ isFormReady = () => {
 
   if(ready) {
     mySubmitBtn.classList.contains('disabled') ? mySubmitBtn.classList.remove('disabled') : null;
+
+    /*
+    
+      get to know the utc
+
+      
+    
+    */
+
+      const myCountry = document.querySelector('select.country-mq').value,
+            myCity = document.querySelector('input.city-mq').value,
+            Year = document.getElementById('year').value,
+            Month = document.getElementById('month').value,
+            Day = document.getElementById('day').value,
+            TimeHour = document.getElementById('hour').value.slice(0,document.getElementById('hour').value.indexOf(':')),
+            TimeMinutes = document.getElementById('hour').value.slice(document.getElementById('hour').value.indexOf(':') +1),
+            //myFullDate = luxon.DateTime.fromObject({year: Year, month: Month, day: Day, hour: TimeHour, minute: TimeMinutes }, { zone: 'Europe/Spain'});
+            myFullDate = luxon.DateTime.fromObject({year: 2017, month: 5, day: 15, hour: 17, minute: 36 }, { zone: 'America/New_York' });
+
+      //console.log(myCountry + ' ' + myCity + ' ' + Year + ' ' + Month + ' ' + Day + ' ' + TimeHour + ' ' + TimeMinutes);
+      console.log('my offset is ', myFullDate.o / 60);
+      //console.group(myOffSet);
+      
+
   }else {
     !mySubmitBtn.classList.contains('disabled') ? mySubmitBtn.classList.add('disabled') : null;
   }
@@ -355,6 +383,10 @@ init = e => {
   mySubmitBtn = document.getElementById('btn-submit');
   mySelects = Array.from(document.querySelectorAll('div.formgroup.secondary select'));
   myInputs = Array.from(document.querySelectorAll('div.formgroup.secondary input[type="text"]'));
+
+  // const DateTime = luxon.DateTime;
+
+  console.log(luxon);
 
   addInteractions();
 
