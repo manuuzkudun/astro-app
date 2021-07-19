@@ -14,10 +14,6 @@
 //= require activestorage
 //= require_tree .
 
-/* ==================================================
-IMPORT MODULES
-================================================== */
-//import * as Luxon from './libs/luxon_min.js';
 
 /* ==================================================
 DECLARE GLOBAL VARS
@@ -85,6 +81,9 @@ const mapQuestCall = (_countryCode, _cityName) => {
   _countryCode -> String -> i.e: ES for Spain
   _cityName -> String -> i.e: Madrid for Madrid
   =================================================== */
+
+
+
 
   !_cityName.length  ? _cityName = 'a' : null;
 
@@ -170,37 +169,40 @@ isFormReady = () => {
 
   !document.querySelector('div.mq-ui--miniform').classList.contains('show-msg') ? ready = false : null;
 
+
+	/*
+	TEMP CODE TO GET relation between city name and IANA TIME ZONA
+	*/
+
+	
+
+	
+
+
   //Enable/Disable Submit button based on form readiness
 
   if(ready) {
     mySubmitBtn.classList.contains('disabled') ? mySubmitBtn.classList.remove('disabled') : null;
 
-    /*
-    
-      get to know the utc
+		const myCity = document.querySelector('input.city-mq').value,
+				myCountry = document.querySelector('select.country-mq').value,
+				myYear = document.getElementById('year').value,
+				myMonth = document.getElementById('month').value,
+				myDay = document.getElementById('day').value,
+				myHour = document.getElementById('data-time-hour').value,
+				myMinutes = document.getElementById('data-time-minutes').value;
 
-      
-    
-    */
 
-      const myCountry = document.querySelector('select.country-mq').value,
-            myCity = document.querySelector('input.city-mq').value,
-            Year = document.getElementById('year').value,
-            Month = document.getElementById('month').value,
-            Day = document.getElementById('day').value,
-            TimeHour = document.getElementById('hour').value.slice(0,document.getElementById('hour').value.indexOf(':')),
-            TimeMinutes = document.getElementById('hour').value.slice(document.getElementById('hour').value.indexOf(':') +1),
-            //myFullDate = luxon.DateTime.fromObject({year: Year, month: Month, day: Day, hour: TimeHour, minute: TimeMinutes }, { zone: 'Europe/Spain'});
-            myFullDate = luxon.DateTime.fromObject({year: 2017, month: 5, day: 15, hour: 17, minute: 36 }, { zone: 'America/New_York' });
+		console.log(myCity, myCountry, myDay, myMonth, myYear, myHour, myMinutes);
 
-      //console.log(myCountry + ' ' + myCity + ' ' + Year + ' ' + Month + ' ' + Day + ' ' + TimeHour + ' ' + TimeMinutes);
-      console.log('my offset is ', myFullDate.o / 60);
-      //console.group(myOffSet);
-      
+
 
   }else {
     !mySubmitBtn.classList.contains('disabled') ? mySubmitBtn.classList.add('disabled') : null;
   }
+
+
+  
 
 
 },
@@ -373,6 +375,9 @@ addInteractions = () => {
 },
 init = e => {
 
+	const lux = luxon.DateTime.fromObject({year: 1978, month: 9, day: 9, hour: 4, minute: 40 }, { zone: 'Europe/Madrid' });
+
+  console.log(lux.o / 60);  
 
 
   document.removeEventListener('turbolinks:load', init, false);
@@ -383,10 +388,6 @@ init = e => {
   mySubmitBtn = document.getElementById('btn-submit');
   mySelects = Array.from(document.querySelectorAll('div.formgroup.secondary select'));
   myInputs = Array.from(document.querySelectorAll('div.formgroup.secondary input[type="text"]'));
-
-  // const DateTime = luxon.DateTime;
-
-  console.log(luxon);
 
   addInteractions();
 
