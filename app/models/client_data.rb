@@ -14,8 +14,8 @@ class ClientData
   end
 
   def local_time
-    timezone = Timezone.lookup(@latitude, @longitude)
-    date_time = DateTime.new(@year,@month,@day,@hour, @minutes,0)
-    timezone.utc_to_local(date_time)
+    # timezone = Timezone.lookup(@latitude, @longitude)
+    date_time = DateTime.new(@year,@month,@day,@hour -1, @minutes,0)
+    # timezone.utc_to_local(date_time)
   end
 end

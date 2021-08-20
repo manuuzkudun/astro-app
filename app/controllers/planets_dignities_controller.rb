@@ -21,7 +21,7 @@ class PlanetsDignitiesController < ApplicationController
         "current_sign": planet.current_sign,
         "speed": planet.speed,
         "house": planet.house,
-        "sign_degree": planet.sign_degree,
+        "sign_degree": decimal_to_dms(planet.sign_degree),
         "dignities":dignity_calculator.calculate_for(planet)
       }
     end
@@ -39,5 +39,12 @@ class PlanetsDignitiesController < ApplicationController
 
   def permitted_params
     params.permit("latitude", "longitude", "year", "month", "day", "hour")
+  end
+
+  # TO-DO: Move it to another place
+  def decimal_to_dms(decimal_value)
+    dg = decimal_value.floor
+    min = ((decimal_value - dg)*60).floor
+    "#{dg}° #{min}'"
   end
 end

@@ -28,7 +28,7 @@
             <span class="sign-icon bottom"><%= t("zodiac_signs.#{planet[:current_sign].to_s}") %></span>
           </div>
           <div class="col">
-            <span class="sign-degree top"><%= planet[:sign_degree].round(2)%>&deg;</span>
+            <span class="sign-degree top"><%= planet[:sign_degree]%>&deg;</span>
             <span class="sign-degree bottom"><%= t("planet_dignities.degree")%></span>
           </div>
           <div class="col">
