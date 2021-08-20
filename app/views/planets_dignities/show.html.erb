@@ -139,7 +139,7 @@
           <% end %>
           <% if planet[:planet_name] != 'sun' && planet[:planet_name] != 'moon' %>
             <% if planet[:dignities][:accidental_dignities][:stationary][:result]  %>
-              <li><span>S<%= t("planet_dignities.stationary")%></span><span class="unscored"><%= planet[:dignities][:accidental_dignities][:stationary][:score] %></span></li>
+              <li><span><%= t("planet_dignities.stationary")%></span><span class="unscored"><%= planet[:dignities][:accidental_dignities][:stationary][:score] %></span></li>
             <% else %>
               <li><span><%= t("planet_dignities.stationary")%></span><span><%= planet[:dignities][:accidental_dignities][:stationary][:score] %></span></li>
             <% end %>

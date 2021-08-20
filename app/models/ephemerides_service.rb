@@ -78,7 +78,7 @@ class EphemeridesService
   end
 
   def houses
-    @houses ||= Swe4r::swe_houses(julian_day, @latitude, @longitude, 'P')[1..13]
+    @houses ||= Swe4r::swe_houses(julian_day, @latitude, @longitude, 'W')[1..13]
   end
 
   def set_location
