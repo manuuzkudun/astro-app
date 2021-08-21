@@ -15,14 +15,26 @@ class PlanetsDignitiesController < ApplicationController
 
     dignity_calculator = DignityCalculator.new(planetsData, score_config)
 
+    ascendant = ephemerides.get_ascendant
+    @ascendant = OpenStruct.new(
+      sign: ascendant[:sign].capitalize,
+      degree: decimal_to_dms(ascendant[:degree])
+    )
+
+    midheaven = ephemerides.get_midheaven
+    @midheaven = OpenStruct.new(
+      sign: midheaven[:sign].capitalize,
+      degree: decimal_to_dms(midheaven[:degree])
+    )
+
     @planets_dignities = planetsData.map do |planet|
       {
-        "planet_name": planet.name,
-        "current_sign": planet.current_sign,
-        "speed": planet.speed,
-        "house": planet.house,
-        "sign_degree": decimal_to_dms(planet.sign_degree),
-        "dignities":dignity_calculator.calculate_for(planet)
+        planet_name: planet.name,
+        current_sign: planet.current_sign,
+        speed: planet.speed,
+        house: planet.house,
+        sign_degree: decimal_to_dms(planet.sign_degree),
+        dignities: dignity_calculator.calculate_for(planet)
       }
     end
   end

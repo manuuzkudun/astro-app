@@ -16,6 +16,25 @@ class EphemeridesService
     represent(planet, data)
   end
 
+
+  def get_ascendant
+    set_location
+    ascendant = houses.first
+    {
+      sign: get_zodiac_sign(ascendant),
+      degree: ascendant % 30
+    }
+  end
+
+  def get_midheaven
+    set_location
+    midheaven = houses[9]
+    {
+      sign: get_zodiac_sign(midheaven),
+      degree: midheaven % 30
+    }
+  end
+
   private
 
   def represent(planet, data)

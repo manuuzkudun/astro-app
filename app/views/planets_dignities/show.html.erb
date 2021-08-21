@@ -18,6 +18,16 @@
     <hr></hr>
   </div>
   <div class="container mt-3 mb-5">
+    <div class="col">
+      <h3><%= t("ascendant")%></h3>
+      <span class="sign-degree top"><%= @ascendant.sign %></span>
+      <span class="sign-degree bottom"><%= @ascendant.degree %></span>
+    </div>
+    <div class="col">
+      <h3><%= t("midheaven")%></h3>
+      <span class="sign-degree top"><%= @midheaven.sign %></span>
+      <span class="sign-degree bottom"><%= @midheaven.degree %></span>
+    </div>
     <% @planets_dignities.each do |planet| %>
       <div class="planet-result">
         <h3><%= t("planets.#{planet[:planet_name]}") %></h3>
@@ -28,7 +38,7 @@
             <span class="sign-icon bottom"><%= t("zodiac_signs.#{planet[:current_sign].to_s}") %></span>
           </div>
           <div class="col">
-            <span class="sign-degree top"><%= planet[:sign_degree]%>&deg;</span>
+            <span class="sign-degree top"><%= planet[:sign_degree]%></span>
             <span class="sign-degree bottom"><%= t("planet_dignities.degree")%></span>
           </div>
           <div class="col">
