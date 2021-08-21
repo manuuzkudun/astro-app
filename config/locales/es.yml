@@ -1,5 +1,7 @@
 es:
   ascendant: 'Ascendente'
+  asc: 'ASC'
+  mc: 'MC'
   midheaven: 'Medio cielo'
   months:
     january: 'Enero'

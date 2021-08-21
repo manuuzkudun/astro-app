@@ -63,6 +63,102 @@ div.container {
     margin:1.5rem 0 0 0;
   }
 
+
+  /* Sign Icons
+  =================================================== */
+
+  span.sign-icon.top.aries {
+    background:transparent url('/assets/AstroIconsSVG/Aries.svg') no-repeat top center;
+  }
+
+  span.sign-icon.top.taurus {
+    background:transparent url('/assets/AstroIconsSVG/Taurus.svg') no-repeat top center;
+  }
+
+  span.sign-icon.top.gemini {
+    background:transparent url('/assets/AstroIconsSVG/Gemini.svg') no-repeat top center;
+  }
+
+  span.sign-icon.top.cancer {
+    background:transparent url('/assets/AstroIconsSVG/Cancer.svg') no-repeat top center;
+  }
+
+  span.sign-icon.top.leo {
+    background:transparent url('/assets/AstroIconsSVG/Leo.svg') no-repeat top center;
+  }
+
+  span.sign-icon.top.virgo {
+    background:transparent url('/assets/AstroIconsSVG/Virgo.svg') no-repeat top center;
+  }
+
+  span.sign-icon.top.libra {
+    background:transparent url('/assets/AstroIconsSVG/Libra.svg') no-repeat top center;
+  }
+
+  span.sign-icon.top.scorpio {
+    background:transparent url('/assets/AstroIconsSVG/Scorpio.svg') no-repeat top center;
+  }
+
+  span.sign-icon.top.sagittarius {
+    background:transparent url('/assets/AstroIconsSVG/Sagittarius.svg') no-repeat top center;
+  }
+
+  span.sign-icon.top.capricorn {
+    background:transparent url('/assets/AstroIconsSVG/Capricorn.svg') no-repeat top center;
+  }
+
+  span.sign-icon.top.aquarius {
+    background:transparent url('/assets/AstroIconsSVG/Acuarius.svg') no-repeat top center;
+  }
+
+  span.sign-icon.top.pisces {
+    background:transparent url('/assets/AstroIconsSVG/Pisces.svg') no-repeat top center;
+  }
+
+
+  /* Styles for the angles
+  =================================================== */
+
+  div.angles-result {
+    max-width:50%;
+    margin:0 auto 2rem auto;
+    font-family: $montseFont;
+
+    >div:first-of-type {
+      border-right:#ccc 0.063rem solid;
+    }
+
+
+    h3 {
+      font-size:1rem;
+      letter-spacing: 0;
+      margin:0;
+    }
+
+    span {
+      display:block;
+
+      &.top {
+        background-size:1rem !important;
+        background-position:center center !important;
+        height:3rem;
+        width:100%;
+      }
+
+      &.bottom {
+        color:#ccc;
+        font-size:0.813rem;
+        font-weight: 700;;
+      }
+    }
+
+    +hr {
+      margin:0 auto 5rem auto;
+    }
+
+
+  }
+
   /* Styles for each planet
   =================================================== */
 
@@ -145,6 +241,8 @@ div.container {
       background:transparent url('/assets/AstroIconsSVG/saturn.svg') no-repeat center center;
     }
 
+  
+
     div.planet-result--summary{
       margin:0 auto;
       max-width:50%;
@@ -165,56 +263,7 @@ div.container {
           background-size:1rem !important;
         }
 
-        /* Sign Icons
-        =================================================== */
-
-        span.sign-icon.top.aries {
-          background:transparent url('/assets/AstroIconsSVG/Aries.svg') no-repeat top center;
-        }
-
-        span.sign-icon.top.taurus {
-          background:transparent url('/assets/AstroIconsSVG/Taurus.svg') no-repeat top center;
-        }
-
-        span.sign-icon.top.gemini {
-          background:transparent url('/assets/AstroIconsSVG/Gemini.svg') no-repeat top center;
-        }
-
-        span.sign-icon.top.cancer {
-          background:transparent url('/assets/AstroIconsSVG/Cancer.svg') no-repeat top center;
-        }
-
-        span.sign-icon.top.leo {
-          background:transparent url('/assets/AstroIconsSVG/Leo.svg') no-repeat top center;
-        }
-
-        span.sign-icon.top.virgo {
-          background:transparent url('/assets/AstroIconsSVG/Virgo.svg') no-repeat top center;
-        }
-
-        span.sign-icon.top.libra {
-          background:transparent url('/assets/AstroIconsSVG/Libra.svg') no-repeat top center;
-        }
-
-        span.sign-icon.top.scorpio {
-          background:transparent url('/assets/AstroIconsSVG/Scorpio.svg') no-repeat top center;
-        }
-
-        span.sign-icon.top.sagittarius {
-          background:transparent url('/assets/AstroIconsSVG/Sagittarius.svg') no-repeat top center;
-        }
-
-        span.sign-icon.top.capricorn {
-          background:transparent url('/assets/AstroIconsSVG/Capricorn.svg') no-repeat top center;
-        }
-
-        span.sign-icon.top.acuarius {
-          background:transparent url('/assets/AstroIconsSVG/Acuarius.svg') no-repeat top center;
-        }
-
-        span.sign-icon.top.pisces {
-          background:transparent url('/assets/AstroIconsSVG/Pisces.svg') no-repeat top center;
-        }
+        
 
         span.bottom {
           color:$lightGray;

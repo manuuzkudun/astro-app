@@ -17,17 +17,20 @@
     <h6><%= t("results_page.results") %></h6>
     <hr></hr>
   </div>
-  <div class="container mt-3 mb-5">
-    <div class="col">
-      <h3><%= t("ascendant")%></h3>
-      <span class="sign-degree top"><%= @ascendant.sign %></span>
-      <span class="sign-degree bottom"><%= @ascendant.degree %></span>
+  <div class="container mt-5 mb-5">
+    <div class="angles-result row">
+      <div class="col">
+        <h3><%= t("asc")%></h3>
+        <span class="sign-icon top <%= @ascendant.sign.downcase %> col"></span>
+        <span class="sign-degree bottom col"><%= @ascendant.degree %></span>
+      </div>
+      <div class="col">
+        <h3><%= t("mc")%></h3>
+        <span class="sign-icon top <%= @midheaven.sign.downcase %> col"></span>
+        <span class="sign-degree bottom col"><%= @midheaven.degree %></span>
+      </div>
     </div>
-    <div class="col">
-      <h3><%= t("midheaven")%></h3>
-      <span class="sign-degree top"><%= @midheaven.sign %></span>
-      <span class="sign-degree bottom"><%= @midheaven.degree %></span>
-    </div>
+    <hr/>
     <% @planets_dignities.each do |planet| %>
       <div class="planet-result">
         <h3><%= t("planets.#{planet[:planet_name]}") %></h3>
