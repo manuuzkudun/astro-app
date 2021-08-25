@@ -74,6 +74,9 @@ const leadingStringToZero = (_str) => {
 },
 insertAfter = (_newNode, _referenceNode) => {
     _referenceNode.parentNode.insertBefore(_newNode, _referenceNode.nextSibling);
+},
+removeMessage = () => {
+
 }
 
 
@@ -206,17 +209,21 @@ isFormReady = () => {
 
       const lux = luxon.DateTime.fromObject({year: myYear, month: myMonth, day: myDay, hour: myHour, minute: myMinutes }, { zone: _d.iana_code});
 
-      let myInfo = document.createElement('p');
+      let myInfo = document.createElement('p'),
+          compiledHour = parseInt(myHour) + (-(lux.o / 60)) + (parseInt(myMinutes) * 100 / 60) / 100;
 
       myInfo.className = 'alert alert-success';
-      myInfo.innerHTML = `TimeZone is <span>${_d.iana_code}</span> and UTC offset is <span>${lux.o / 60}</span>`;
+      myInfo.innerHTML = `TimeZone is <span>${_d.iana_code}</span> and UTC offset is <span>${-(lux.o / 60)} and the compiled hour is ${compiledHour}</span>`;
+
+      document.getElementById('hour').value = compiledHour; //Change the hour before sending to back
 
       insertAfter(myInfo, document.querySelector('ul.nav')); //insert Alert on top of page
+
 
       setTimeout( () => {
         // myInfo.classList.add('faded');
         myInfo.parentNode.removeChild(myInfo);
-      }, 5000);
+      }, 10000);
 
 
     });
