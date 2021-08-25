@@ -15,6 +15,10 @@
 //= require_tree .
 
 
+
+
+
+
 /* ==================================================
 DECLARE GLOBAL VARS
 ================================================== */
@@ -38,12 +42,15 @@ const myMarkerIconOptions = {
   size: 'md'
 }
 
+
+
+
 /* ==================================================
 LOCAL Fetching FUNCTION
 ================================================== */
 
 class Fetch {
-  async apiCall(_url, _data) {
+  async apiCall(_url) {
 
 
     const call = await fetch(_url),
@@ -70,6 +77,7 @@ insertAfter = (_newNode, _referenceNode) => {
 }
 
 
+
 /* ==================================================
 MAPQUEST FUNCTION
 ================================================== */
@@ -81,6 +89,9 @@ const mapQuestCall = (_countryCode, _cityName) => {
   _countryCode -> String -> i.e: ES for Spain
   _cityName -> String -> i.e: Madrid for Madrid
   =================================================== */
+
+
+
 
   !_cityName.length  ? _cityName = 'a' : null;
 
@@ -166,13 +177,61 @@ isFormReady = () => {
 
   !document.querySelector('div.mq-ui--miniform').classList.contains('show-msg') ? ready = false : null;
 
-  //Enable/Disable Submit button based on form readiness
+
+  /**
+   * 
+   * 
+   * TEMP CODE FOR TIMEZONE / OFFSET VISUAL INDICATOR
+   * 
+   */
 
   if(ready) {
     mySubmitBtn.classList.contains('disabled') ? mySubmitBtn.classList.remove('disabled') : null;
+
+		const myCity = document.querySelector('input.city-mq').value,
+				myCountry = document.querySelector('select.country-mq').value,
+				myYear = document.getElementById('year').value,
+				myMonth = document.getElementById('month').value,
+				myDay = document.getElementById('day').value,
+				myHour = document.getElementById('data-time-hour').value,
+				myMinutes = document.getElementById('data-time-minutes').value,
+        myCountryOptions = document.querySelectorAll('select.country-mq option'),
+        myFullCountryName = Array.prototype.find.call(myCountryOptions, (_option) => _option.value === myCountry);
+
+    // console.log(myCity, myCountry, myDay, myMonth, myYear, myHour, myMinutes, myFullCountryName.innerHTML);
+
+    fetchC.apiCall(`https://ts--api--rest.herokuapp.com/cities/iana/${myCity}/${myFullCountryName.innerHTML}`)
+    .then(_d => {
+      // console.log(_d.iana_code);
+
+      const lux = luxon.DateTime.fromObject({year: myYear, month: myMonth, day: myDay, hour: myHour, minute: myMinutes }, { zone: _d.iana_code});
+
+      let myInfo = document.createElement('p');
+
+      myInfo.className = 'alert alert-success';
+      myInfo.innerHTML = `TimeZone is <span>${_d.iana_code}</span> and UTC offset is <span>${lux.o / 60}</span>`;
+
+      insertAfter(myInfo, document.querySelector('ul.nav')); //insert Alert on top of page
+
+      setTimeout( () => {
+        // myInfo.classList.add('faded');
+        myInfo.parentNode.removeChild(myInfo);
+      }, 5000);
+
+
+    });
+
+
+
+    
+
+
   }else {
     !mySubmitBtn.classList.contains('disabled') ? mySubmitBtn.classList.add('disabled') : null;
   }
+
+
+  
 
 
 },
@@ -344,6 +403,11 @@ addInteractions = () => {
 
 },
 init = e => {
+
+	//const lux = luxon.DateTime.fromObject({year: 1978, month: 9, day: 9, hour: 4, minute: 40 }, { zone: 'Europe/Madrid' });
+
+  //console.log(lux.o / 60);  
+
 
 
 
