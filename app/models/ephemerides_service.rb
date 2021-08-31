@@ -6,7 +6,11 @@ class EphemeridesService
     @latitude = client_data.latitude
     @longitude = client_data.longitude
     @altitude = client_data.altitude
-    @local_time = client_data.local_time
+    @year = client_data.year
+    @month = client_data.month
+    @day = client_data.day
+    @hour = client_data.hour
+    
   end
 
   def get_data(planet)
@@ -51,7 +55,7 @@ class EphemeridesService
   end
 
   def options
-    Swe4r::SEFLG_SPEED|Swe4r::SEFLG_TOPOCTR
+    Swe4r::SEFLG_SPEED
   end
 
   def get_zodiac_sign(planet_longitude)
@@ -105,7 +109,7 @@ class EphemeridesService
   end
 
   def julian_day
-    Swe4r::swe_julday(@local_time.year, @local_time.month, @local_time.day, @local_time.hour)
+    Swe4r::swe_julday(@year, @month, @day, @hour)
   end
 
   def in_sector?(latitude, cusp1, cusp2)
