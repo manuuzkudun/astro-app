@@ -201,32 +201,32 @@ isFormReady = () => {
         myCountryOptions = document.querySelectorAll('select.country-mq option'),
         myFullCountryName = Array.prototype.find.call(myCountryOptions, (_option) => _option.value === myCountry);
 
-    // console.log(myCity, myCountry, myDay, myMonth, myYear, myHour, myMinutes, myFullCountryName.innerHTML);
+   // console.log(myCity, myCountry, myDay, myMonth, myYear, myHour, myMinutes, myFullCountryName.innerHTML);
 
-    fetchC.apiCall(`https://ts--api--rest.herokuapp.com/cities/iana/${myCity}/${myFullCountryName.innerHTML}`)
-    .then(_d => {
-      // console.log(_d.iana_code);
+    // fetchC.apiCall(`https://ts--api--rest.herokuapp.com/cities/iana/${myCity}/${myFullCountryName.innerHTML}`)
+    // .then(_d => {
 
-      const lux = luxon.DateTime.fromObject({year: myYear, month: myMonth, day: myDay, hour: myHour, minute: myMinutes }, { zone: _d.iana_code});
+    //   const lux = luxon.DateTime.fromObject({year: myYear, month: myMonth, day: myDay, hour: myHour, minute: myMinutes }, { zone: _d.iana_code});
 
-      let myInfo = document.createElement('p'),
-          compiledHour = parseInt(myHour) + (-(lux.o / 60)) + (parseInt(myMinutes) * 100 / 60) / 100;
+    //   console.log(lux);
 
-      myInfo.className = 'alert alert-success';
-      myInfo.innerHTML = `TimeZone is <span>${_d.iana_code}</span> and UTC offset is <span>${-(lux.o / 60)} and the compiled hour is ${compiledHour}</span>`;
+    //   let myInfo = document.createElement('p'),
+    //       compiledHour = parseInt(myHour) + (-(lux.o / 60)) + (parseInt(myMinutes) * 100 / 60) / 100;
 
-      document.getElementById('hour').value = compiledHour; //Change the hour before sending to back
+    //   myInfo.className = 'alert alert-success';
+    //   myInfo.innerHTML = `TimeZone is <span>${_d.iana_code}</span> and UTC offset is <span>${-(lux.o / 60)} and the compiled hour is ${compiledHour}</span>`;
 
-      insertAfter(myInfo, document.querySelector('ul.nav')); //insert Alert on top of page
+    //   //document.getElementById('hour').value = compiledHour; //Change the hour before sending to back
+
+    //   //insertAfter(myInfo, document.querySelector('ul.nav')); //insert Alert on top of page
+
+    //   // setTimeout( () => {
+    //   //   // myInfo.classList.add('faded');
+    //   //   myInfo.parentNode.removeChild(myInfo);
+    //   // }, 10000);
 
 
-      setTimeout( () => {
-        // myInfo.classList.add('faded');
-        myInfo.parentNode.removeChild(myInfo);
-      }, 10000);
-
-
-    });
+    // });
 
 
 
