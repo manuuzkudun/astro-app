@@ -139,9 +139,6 @@ const mapQuestCall = (_countryCode, _cityName) => {
 
   });
 
-
-
-
 }
 
 /* ==================================================
@@ -151,14 +148,6 @@ LOGIC FUNCTION
 const setFormCoordinates = (_lat,_lng) => {
   document.getElementById('latitude').value = _lat;
   document.getElementById('longitude').value = _lng;
-
-  // Experimental visual info for user once lat, long are set
-  // L.mapquest.key = mapQuestKey;
-  //
-  // L.mapquest.geocoding().reverse({lat:_lat,lng:_lng}, (error, response) => {
-  //   console.log('reverse response is ');
-  //   console.dir(response);
-  // });
 
   document.querySelector('input.msg-mq').value = 'Located at ' + _lat.toFixed(2) + ' lat, ' + _lng.toFixed(2) + ' lng';
 
@@ -176,17 +165,7 @@ isFormReady = () => {
 
   //if we are not showing the map locked message we do not have geo coordinates. Form is not ready
 
-  //console.log(document.querySelector('div.mq-ui--miniform').classList);
-
   !document.querySelector('div.mq-ui--miniform').classList.contains('show-msg') ? ready = false : null;
-
-
-  /**
-   * 
-   * 
-   * TEMP CODE FOR TIMEZONE / OFFSET VISUAL INDICATOR
-   * 
-   */
 
   if(ready) {
     mySubmitBtn.classList.contains('disabled') ? mySubmitBtn.classList.remove('disabled') : null;
@@ -201,45 +180,9 @@ isFormReady = () => {
         myCountryOptions = document.querySelectorAll('select.country-mq option'),
         myFullCountryName = Array.prototype.find.call(myCountryOptions, (_option) => _option.value === myCountry);
 
-    // console.log(myCity, myCountry, myDay, myMonth, myYear, myHour, myMinutes, myFullCountryName.innerHTML);
-
-    fetchC.apiCall(`https://ts--api--rest.herokuapp.com/cities/iana/${myCity}/${myFullCountryName.innerHTML}`)
-    .then(_d => {
-      // console.log(_d.iana_code);
-
-      const lux = luxon.DateTime.fromObject({year: myYear, month: myMonth, day: myDay, hour: myHour, minute: myMinutes }, { zone: _d.iana_code});
-
-      let myInfo = document.createElement('p'),
-          compiledHour = parseInt(myHour) + (-(lux.o / 60)) + (parseInt(myMinutes) * 100 / 60) / 100;
-
-      myInfo.className = 'alert alert-success';
-      myInfo.innerHTML = `TimeZone is <span>${_d.iana_code}</span> and UTC offset is <span>${-(lux.o / 60)} and the compiled hour is ${compiledHour}</span>`;
-
-      document.getElementById('hour').value = compiledHour; //Change the hour before sending to back
-
-      insertAfter(myInfo, document.querySelector('ul.nav')); //insert Alert on top of page
-
-
-      setTimeout( () => {
-        // myInfo.classList.add('faded');
-        myInfo.parentNode.removeChild(myInfo);
-      }, 10000);
-
-
-    });
-
-
-
-    
-
-
-  }else {
+      }else {
     !mySubmitBtn.classList.contains('disabled') ? mySubmitBtn.classList.add('disabled') : null;
   }
-
-
-  
-
 
 },
 toggleCityInput = () => {
@@ -329,8 +272,6 @@ addInteractions = () => {
     });
 
 
-
-
     myMapQuestButton.map( (_obj) => {
 
       _obj.addEventListener('click', (e) => {
@@ -410,12 +351,6 @@ addInteractions = () => {
 
 },
 init = e => {
-
-	//const lux = luxon.DateTime.fromObject({year: 1978, month: 9, day: 9, hour: 4, minute: 40 }, { zone: 'Europe/Madrid' });
-
-  //console.log(lux.o / 60);  
-
-
 
 
   document.removeEventListener('turbolinks:load', init, false);
